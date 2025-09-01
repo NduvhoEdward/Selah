@@ -33,7 +33,7 @@ export function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold">Nduvho Ramashia</span>
-              <span className="text-xs text-muted-foreground">Selah Engineering</span>
+              <span className="text-xs text-muted-foreground">Selah Engineering Solutions</span>
             </div>
           </div>
         </Link>
