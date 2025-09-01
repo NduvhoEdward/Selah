@@ -3,7 +3,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Badge } from '../ui/badge'
+import { Badge } from '@/components/ui/badge'
 import { MapPin, GraduationCap, Briefcase } from 'lucide-react'
 
 export function AboutHero() {
