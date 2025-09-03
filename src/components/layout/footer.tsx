@@ -40,7 +40,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold mb-4">Connect</h3>
             <div className="flex space-x-3">
               <a
-                href="https://github.com/nduvho-ramashia" 
+                href="https://github.com/NduvhoEdward" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
@@ -49,7 +49,7 @@ export function Footer() {
                 <span className="sr-only">GitHub</span>
               </a>
               <a
-                href="https://linkedin.com/in/nduvho-ramashia"
+                href="https://linkedin.com/in/nduvhoedward"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
@@ -58,7 +58,7 @@ export function Footer() {
                 <span className="sr-only">LinkedIn</span>
               </a>
               <a
-                href="mailto:Nduvho.Ramashia@gmail.com"
+                href="mailto:hello@selah.net.za"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Mail className="h-5 w-5" />

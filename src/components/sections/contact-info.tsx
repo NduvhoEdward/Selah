@@ -42,13 +42,13 @@ const contactMethods = [
 const socialLinks = [
   {
     title: 'GitHub',
-    href: 'https://github.com/nduvho-ramashia',
+    href: 'https://github.com/NduvhoEdward',
     icon: Github,
     description: 'View my code and contributions'
   },
   {
     title: 'LinkedIn',
-    href: 'https://linkedin.com/in/nduvho-ramashia',
+    href: 'https://linkedin.com/in/NduvhoEdward',
     icon: Linkedin,
     description: 'Professional network and updates'
   }
@@ -178,13 +178,13 @@ export function ContactInfo() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button asChild>
-                  <a href="mailto:Nduvho.Ramashia@gmail.com">
+                  <a href="mailto:hello@selah.net.za">
                     <Mail className="mr-2 h-4 w-4" />
                     Email Me
                   </a>
                 </Button>
                 <Button variant="outline" asChild>
-                  <a href="https://linkedin.com/in/nduvho-ramashia" target="_blank" rel="noopener noreferrer">
+                  <a href="https://linkedin.com/in/nduvhoedward" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="mr-2 h-4 w-4" />
                     Connect on LinkedIn
                   </a>

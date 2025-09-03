@@ -53,7 +53,7 @@ const projects = [
     featured: false,
     status: 'Completed',
     year: '2024',
-    github: 'https://github.com/nduvho-ramashia/portfolio',
+    github: 'https://github.com/NduvhoEdward/portfolio',
     demo: 'https://nduvho-portfolio.vercel.app'
   },
   {

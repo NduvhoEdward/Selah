@@ -9,9 +9,9 @@ import { Github, Star, GitFork, ExternalLink } from 'lucide-react'
 
 // Mock GitHub data - In production, you'd fetch this from GitHub API
 const githubStats = {
-  publicRepos: 12,
-  followers: 45,
-  following: 23,
+  publicRepos: 50,
+  followers: 4,
+  following: 2,
   totalStars: 89
 }
 
@@ -22,7 +22,7 @@ const featuredRepos = [
     language: 'C++',
     stars: 15,
     forks: 3,
-    url: 'https://github.com/nduvho-ramashia/iot-measurement-system'
+    url: 'https://github.com/NduvhoEdward/iot-measurement-system'
   },
   {
     name: 'pcb-design-library',
@@ -30,7 +30,7 @@ const featuredRepos = [
     language: 'Eagle',
     stars: 8,
     forks: 2,
-    url: 'https://github.com/nduvho-ramashia/pcb-design-library'
+    url: 'https://github.com/NduvhoEdward/pcb-design-library'
   },
   {
     name: 'embedded-firmware-utils',
@@ -38,7 +38,7 @@ const featuredRepos = [
     language: 'C',
     stars: 12,
     forks: 4,
-    url: 'https://github.com/nduvho-ramashia/embedded-firmware-utils'
+    url: 'https://github.com/NduvhoEdward/embedded-firmware-utils'
   }
 ]
 
@@ -71,13 +71,13 @@ export function GitHubSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+          className="grid grid-cols-2 md:grid-cols-1 gap-4 mb-12"
         >
           {[
             { label: 'Public Repos', value: githubStats.publicRepos },
-            { label: 'Followers', value: githubStats.followers },
-            { label: 'Following', value: githubStats.following },
-            { label: 'Total Stars', value: githubStats.totalStars },
+            // { label: 'Followers', value: githubStats.followers },
+            // { label: 'Following', value: githubStats.following },
+            // { label: 'Total Stars', value: githubStats.totalStars },
           ].map((stat, index) => (
             <Card key={stat.label}>
               <CardContent className="p-4 text-center">
@@ -142,7 +142,7 @@ export function GitHubSection() {
             viewport={{ once: true }}
           >
             <Button asChild size="lg" className="group">
-              <a href="https://github.com/nduvho-ramashia" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/NduvhoEdward" target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-4 w-4" />
                 View All Repositories
                 <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

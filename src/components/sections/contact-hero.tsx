@@ -16,7 +16,7 @@ export function ContactHero() {
             transition={{ duration: 0.5 }}
             className="space-y-6"
           >
-            <Badge className="w-fit">Get In Touch</Badge>
+            {/* <Badge className="w-fit">Get In Touch</Badge>  */}
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
               Let's Build Something
               <span className="gradient-text"> Amazing Together</span>

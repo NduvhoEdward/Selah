@@ -7,8 +7,8 @@ import { Code, Cpu, Zap, Globe } from 'lucide-react'
 
 const stats = [
   { label: 'Engineering Projects', count: '10+', icon: Zap },
-  { label: 'Web Applications', count: '8+', icon: Globe },
-  { label: 'PCB Designs', count: '15+', icon: Cpu },
+  { label: 'Web Applications', count: '5+', icon: Globe },
+  { label: 'PCB Designs', count: '5+', icon: Cpu },
   { label: 'Open Source', count: '5+', icon: Code },
 ]
 
@@ -23,7 +23,7 @@ export function ProjectsHero() {
             transition={{ duration: 0.5 }}
             className="space-y-6"
           >
-            <Badge className="w-fit">Portfolio</Badge>
+            {/* <Badge className="w-fit">Portfolio</Badge> */}
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
               Engineering Innovation
               <span className="gradient-text"> In Action</span>

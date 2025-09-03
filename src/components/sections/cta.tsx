@@ -34,7 +34,7 @@ export function CallToAction() {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="mailto:Nduvho.Ramashia@gmail.com">
+              <a href="mailto:hello@selah.net.za">
                 <Mail className="mr-2 h-4 w-4" />
                 Send an Email
               </a>

@@ -31,9 +31,9 @@ export function ServicesHero() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
               {[
                 { icon: Zap, label: 'IoT Solutions', count: '10+' },
-                { icon: Wrench, label: 'PCB Designs', count: '15+' },
+                { icon: Wrench, label: 'PCB Designs', count: '5+' },
                 { icon: Code, label: 'Firmware Projects', count: '20+' },
-                { icon: Monitor, label: 'Web Applications', count: '8+' },
+                { icon: Monitor, label: 'Web Applications', count: '5+' },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
