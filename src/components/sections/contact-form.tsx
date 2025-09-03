@@ -8,10 +8,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
-import { Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Send, CheckCircle, AlertCircle, Mail } from 'lucide-react'
+
+interface FormData {
+  name: string
+  email: string
+  subject: string
+  message: string
+}
+
+interface ApiResponse {
+  success: boolean
+  message: string
+  errors?: Array<{ path: string[]; message: string }>
+}
 
 export function ContactForm() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     subject: '',
@@ -19,25 +32,48 @@ export function ContactForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [statusMessage, setStatusMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus('idle')
     
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      // In production, you'd send this to your backend or email service
-      console.log('Form submitted:', formData)
-      
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data: ApiResponse = await response.json()
+
+      if (data.success) {
+        setSubmitStatus('success')
+        setStatusMessage(data.message)
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setSubmitStatus('error')
+        if (data.errors && data.errors.length > 0) {
+          const errorMessages = data.errors.map(err => err.message).join(', ')
+          setStatusMessage(`Please fix: ${errorMessages}`)
+        } else {
+          setStatusMessage(data.message || 'Something went wrong. Please try again.')
+        }
+      }
     } catch (error) {
+      console.error('Form submission error:', error)
       setSubmitStatus('error')
+      setStatusMessage('Network error. Please try again or email me directly.')
     } finally {
       setIsSubmitting(false)
-      setTimeout(() => setSubmitStatus('idle'), 5000)
+      // Clear status after 8 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle')
+        setStatusMessage('')
+      }, 8000)
     }
   }
 
@@ -75,6 +111,7 @@ export function ContactForm() {
                       onChange={handleChange}
                       required
                       placeholder="Your name"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className="space-y-2">
@@ -87,6 +124,7 @@ export function ContactForm() {
                       onChange={handleChange}
                       required
                       placeholder="your.email@example.com"
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -100,6 +138,7 @@ export function ContactForm() {
                     onChange={handleChange}
                     required
                     placeholder="Project inquiry, collaboration, etc."
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -113,21 +152,46 @@ export function ContactForm() {
                     required
                     placeholder="Tell me about your project, requirements, timeline, etc."
                     className="min-h-[120px]"
+                    disabled={isSubmitting}
                   />
                 </div>
 
                 {submitStatus === 'success' && (
-                  <div className="flex items-center space-x-2 text-green-600 bg-green-50 dark:bg-green-950 p-3 rounded-md">
-                    <CheckCircle className="h-4 w-4" />
-                    <span className="text-sm">Message sent successfully! I'll get back to you soon.</span>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center space-x-2 text-green-600 bg-green-50 dark:bg-green-950 p-3 rounded-md"
+                  >
+                    <CheckCircle className="h-4 w-4 flex-shrink-0" />
+                    <span className="text-sm">{statusMessage}</span>
+                  </motion.div>
                 )}
 
                 {submitStatus === 'error' && (
-                  <div className="flex items-center space-x-2 text-red-600 bg-red-50 dark:bg-red-950 p-3 rounded-md">
-                    <AlertCircle className="h-4 w-4" />
-                    <span className="text-sm">Something went wrong. Please try again or email me directly.</span>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex flex-col space-y-3 text-red-600 bg-red-50 dark:bg-red-950 p-3 rounded-md"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                      <span className="text-sm">{statusMessage}</span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-sm">
+                      <span>Or email me directly:</span>
+                      <Button
+                        variant="link"
+                        size="sm"
+                        className="h-auto p-0 text-red-600 hover:text-red-700"
+                        asChild
+                      >
+                        <a href="mailto:hello@Selah.net.za">
+                          <Mail className="h-3 w-3 mr-1" />
+                          hello@Selah.net.za
+                        </a>
+                      </Button>
+                    </div>
+                  </motion.div>
                 )}
 
                 <Button 

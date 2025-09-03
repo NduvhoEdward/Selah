@@ -18,8 +18,8 @@ import {
 const contactMethods = [
   {
     title: 'Email',
-    value: 'Nduvho.Ramashia@gmail.com',
-    href: 'mailto:Nduvho.Ramashia@gmail.com',
+    value: 'hello@Selah.net.za',
+    href: 'mailto:hello@Selah.net.za',
     icon: Mail,
     description: 'Best for project inquiries'
   },
